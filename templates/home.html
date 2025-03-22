@@ -1,10 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>FreeMath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-$END$
+<div id="whiteboard">
+    <div id="actions">
+        <button id="clear">
+            <img src="{{ url_for('static', filename='icons/icons8-clear-symbol-50.svg') }}" alt="Clear">
+        </button>
+        <button id="undo">
+            <img src="{{ url_for('static', filename='icons/icons8-undo-50.svg') }}" alt="Undo">
+        </button>
+        <button id="redo">
+            <img src="{{ url_for('static', filename='icons/icons8-redo-50.svg') }}" alt="Redo">
+        </button>
+        <span class="sep"></span>
+        <button id="image">
+            <img src="{{ url_for('static', filename='icons/icons8-image-50.svg') }}" alt="Image">
+        </button>
+        <span class="sep"></span>
+        <button id="eraser">
+            <img src="{{ url_for('static', filename='icons/icons8-erase-50.svg') }}" alt="Eraser">
+        </button>
+        <button id="white" class="selected">
+            <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="25" fill="white"></circle>
+            </svg>
+        </button>
+        <button id="black">
+            <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="25" fill="black"></circle>
+            </svg>
+        </button>
+        <button id="red">
+            <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="25" fill="#f12259"></circle>
+            </svg>
+        </button>
+        <button id="green">
+            <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="25" fill="#27dc66"></circle>
+            </svg>
+        </button>
+        <button id="blue">
+            <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="25" fill="#529bef"></circle>
+            </svg>
+        </button>
+    </div>
+    <canvas id="board"></canvas>
+</div>
+<div id="chat">
+    <h2>Chat</h2>
+    <div id="message-history"></div>
+    <form id="message-form">
+        <input type="text" id="input" placeholder="Type your message here..." autocomplete="off">
+        <button type="submit" id="send"><img src="{{ url_for('static', filename='icons/icons8-send.svg') }}" alt="Send"></button>
+    </form>
+</div>
+<template id="message-template">
+    <div class="message">
+        <div class="message-title"></div>
+        <div class="message-content"></div>
+        <img class="message-image" src="" alt="Whiteboard Image" style="display: none;">
+    </div>
+</template>
+
+<div id="image-upload-popup" class="popup">
+    <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h2>Upload Image</h2>
+        <input type="file" id="image-upload" accept="image/*">
+        <div id="image-drop-area">
+            Or drop image here
+        </div>
+        <button id="confirm-image">Confirm</button>
+    </div>
+</div>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+        },
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="{{ url_for('static', filename='main.js') }}" type="module"></script>
 </body>
 </html>

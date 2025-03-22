@@ -1,0 +1,202 @@
+:root {
+    --background: #28282a;
+    --background-dark: #1c1c1e;
+    --foreground: #f0f0f0;
+    --primary: #d51b68;
+    --secondary: #f8701e;
+    --gradient: linear-gradient(135deg, #d51b68, #f8701e);
+    --bg-gradient-dark: linear-gradient(135deg, #28282a 25%, #1c1c1e);
+    --bg-gradient-light: linear-gradient(135deg, #28282a 75%, #1c1c1e);
+
+    --border: #7e7e7e;
+
+    --lighten: rgba(240, 240, 240, 0.1);
+    --darken: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    background-image: var(--bg-gradient-light);
+    color: white;
+}
+
+#whiteboard {
+    display: flex;
+    width: 70%;
+    height: 100vh;
+}
+
+#board {
+    border: 1px solid #7e7e7e;
+    width: 100%;
+    background-color: var(--background);
+    background-image: var(--bg-gradient-dark);
+}
+
+#actions {
+    display: flex;
+    flex-direction: column;
+    width: 2rem;
+}
+
+#actions button {
+    margin: 0;
+    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+#actions button:hover {
+    background-color: var(--lighten);
+}
+
+#actions button.selected {
+    background-color: var(--lighten);
+}
+
+#actions button img, #actions button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#actions button img {
+    filter: invert(1);
+}
+
+#actions .sep {
+    border-top: 1px solid #7e7e7e;
+    margin: 0.5rem;
+}
+
+#chat {
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#message-history {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+#message-form {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#input {
+    flex: 1;
+    border-radius: 0.5rem;
+    border: 1px solid #7e7e7e;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--background);
+    color: var(--foreground);
+    outline: none;
+}
+
+#send {
+    aspect-ratio: 1;
+    border: 1px solid #7e7e7e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: var(--background)
+}
+
+#send img {
+    filter: invert();
+}
+
+.message-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: var(--background-dark);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--border);
+    width: 50%; /* Could be more or less, depending on screen size */
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.close-popup {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#text-input {
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100px;
+    resize: vertical;
+}
+
+#confirm-text, #confirm-image {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+}
+
+#image-upload {
+    margin-bottom: 1rem;
+}
+
+#image-drop-area {
+    border: 2px dashed var(--border);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
